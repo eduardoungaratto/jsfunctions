@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pagination</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div id="pagination">
+		<span id="content-pagination">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th>id</th>
+						<th>name</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td id="user1id"></td>
+						<td id="user1name"></td>
+					</tr>
+					<tr>
+						<td id="user2id"></td>
+						<td id="user2name"></td>
+					</tr>
+				</tbody>
+			</table>
+		</span>
+	</div>
+	<script type="text/javascript">
+		users = [{
+			id: 15,
+			nome: 'MARIA'
+			},{
+			id: 22,
+			nome: 'JOSÉ'
+			},{
+			id: 25,
+			nome: 'ANDERSON'
+			},{
+			id: 24,
+			nome: 'ADMINISTRADOR'
+			},{
+			id: 35,
+			nome: 'MARTA'
+			},{
+			id: 36,
+			nome: 'MAISTRE'
+			},{
+			id: 47,
+			nome: 'ANTONIO'
+			},{
+			id: 18,
+			nome: 'JORGE'
+			},{
+			id: 49,
+			nome: 'WILLIAM'
+			},{
+			id: 20,
+			nome: 'MARCOS'
+		}]
+		
+		var x = 0;
+		
+		function next(users) {
+			if (x < users.length-1) {
+				document.getElementById('page').innerHTML = x;	
+				document.getElementById('user1id').innerHTML = users[x].id;
+				document.getElementById('user1name').innerHTML = users[x].nome;
+				document.getElementById('user2id').innerHTML = users[x + 1].id;
+				document.getElementById('user2name').innerHTML = users[x + 1].nome;
+				/*
+					console.log('page ', x)
+					console.log(x , users[x]);
+					console.log(x+1 , users[x + 1]);			
+				*/
+				x++;
+			}
+		}
+		
+		function prev(users) {
+			if (x > 1) { 
+				x--;
+				document.getElementById('page').innerHTML = x;	
+				document.getElementById('user1id').innerHTML = users[x-1].id;
+				document.getElementById('user1name').innerHTML = users[x-1].nome;
+				document.getElementById('user2id').innerHTML = users[x].id;
+				document.getElementById('user2name').innerHTML = users[x].nome;
+				/*
+					console.log("page ", x);
+					console.log(x-1, users[x-1]);
+					console.log(x , users[x]);								
+				*/
+			}
+		}		
+
+		window.addEventListener('DOMContentLoaded', function() {
+  			next(users);
+		}, true);
+	</script>
+	<button class="btn btn-info" id="prev" type="button" onclick="prev(users);">PREV</button>
+	<span id="page"></span>
+	<button class="btn btn-info" id="next" type="button" onclick="next(users);">NEXT</button>
+</body>
+</html>
+
