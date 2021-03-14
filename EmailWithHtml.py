@@ -55,7 +55,7 @@ def disconnect_server(server):
 
 def new_email(_name, html, _subject, _to):
   try:
-    # Envia mensagem como html no corpo do email
+    # Send message with html on email body
     content = MIMEText(html, "html")
     msg = MIMEMultipart("alternative")
     msg['Subject'] = _subject
