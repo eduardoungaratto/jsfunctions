@@ -28,7 +28,7 @@ txt = file.read()
 email_to = txt.split(',')
 file.close()
 
-# Conteudo da email
+# content
 html = """PASTE HOUR HTML HERE"""
 
 def start_server():
